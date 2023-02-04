@@ -7,36 +7,36 @@
 
 const {getJson} = require('serpapi')
 const fs = require('fs');
-const caption = fs.readFileSync("./Captions/atp.txt","utf8").toString();
+
+function serp(caption, API_KEY='fc0457ba9effb998ca950a629fe826fff0533cc9490af25b96651fcc27aecfb7'){
+  // const caption = fs.readFileSync(`./Captions/${caption_file}.txt`,"utf8").toString();
+  const response = async() => {
+    const inresponse = await getJson("google", {
+      api_key: API_KEY, // Get your API_KEY from https://serpapi.com/manage-api-key
+      tbm: "isch",
+      q: caption,
+      location: "Pittsburgh, Pennsylvania",
+    })
+    // console.log(Object.keys(inresponse))
+    return inresponse["images_results"];
+  };
+  //console.log(response());
 
 
+  response().then(
+    inresponse => {
+      fs.writeFileSync(`./serpapi_output/${caption_file}_caption.json`, JSON.stringify(inresponse), err => {
+        if (err) {
+          console.error(err);
+        }
+        // file written successfully
+      });
+      
+    }
 
-const API_KEY = 'fc0457ba9effb998ca950a629fe826fff0533cc9490af25b96651fcc27aecfb7';
-const response = async() => {
-  const inresponse = await getJson("google", {
-    api_key: API_KEY, // Get your API_KEY from https://serpapi.com/manage-api-key
-    tbm: "isch",
-    q: caption,
-    location: "Pittsburgh, Pennsylvania",
-  })
-  // console.log(Object.keys(inresponse))
-  return inresponse["images_results"];
-};
-//console.log(response());
+  )
+}
 
-
-response().then(
-  inresponse => {
-    fs.writeFileSync('./serpapi_output/atp_caption.json', JSON.stringify(inresponse), err => {
-      if (err) {
-        console.error(err);
-      }
-      // file written successfully
-    });
-    
-  }
-
-)
 
 // const params = {
 //   q: "Coffee",
@@ -52,3 +52,5 @@ response().then(
 
 // // Show result as JSON
 // search.json(params, callback);
+
+module.exports = {serp} 
