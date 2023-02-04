@@ -5,12 +5,14 @@
 
 //import { getJson } from "serpapi";
 
+// EXPIRED: fc0457ba9effb998ca950a629fe826fff0533cc9490af25b96651fcc27aecfb7
+
 const {getJson} = require('serpapi')
 const fs = require('fs');
 
 function serp(caption, API_KEY='fc0457ba9effb998ca950a629fe826fff0533cc9490af25b96651fcc27aecfb7'){
   // const caption = fs.readFileSync(`./Captions/${caption_file}.txt`,"utf8").toString();
-  const response = async() => {
+  let response = async() => {
     const inresponse = await getJson("google", {
       api_key: API_KEY, // Get your API_KEY from https://serpapi.com/manage-api-key
       tbm: "isch",
@@ -18,24 +20,23 @@ function serp(caption, API_KEY='fc0457ba9effb998ca950a629fe826fff0533cc9490af25b
       location: "Pittsburgh, Pennsylvania",
     })
     // console.log(Object.keys(inresponse))
+    //console.log(inresponse["images_results"])
     return inresponse["images_results"];
   };
   //console.log(response());
 
-
-  response().then(
-    inresponse => {
-      fs.writeFileSync(`./serpapi_output/${caption_file}_caption.json`, JSON.stringify(inresponse), err => {
-        if (err) {
-          console.error(err);
-        }
-        // file written successfully
-      });
-      
+  let runAPIValue = response().then(
+    res => {
+      //console.log(res)
+      return res[0]["original"];
+       
     }
-
   )
+
+  return runAPIValue
 }
+
+//serp("urmom")
 
 
 // const params = {

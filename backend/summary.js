@@ -9,7 +9,7 @@ function summ(text){
   });
   const openai = new OpenAIApi(configuration);
 
-  const runAPI = async () => {
+  let runAPI = async () => {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: `Summarize this for a high school student: ${text}`,
@@ -24,15 +24,19 @@ function summ(text){
     return response
   }
   
-  runAPI().then(
+  let runAPIValue = runAPI().then(
     response => {
-      //console.log(response.data.choices[0].text);
+
       return response.data.choices[0].text
     }
   )
+
+  return runAPIValue
 }
 
 //const text = fs.readFileSync("./texts/Lipids.txt","utf8").toString();
+
+//console.log(summ(text))
 
 //FROM OPENAI WEBSITE
 //const { Configuration, OpenAIApi } = require("openai");

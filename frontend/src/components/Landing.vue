@@ -11,7 +11,7 @@
         justify = "center">
     </el-input>
     <br />
-    <el-button type="success" plain @click="submit()">Enter</el-button>
+    <el-button type="success" plain @click="submit()" style="padding:10px"><router-link to="/carousel">Enter</router-link></el-button>
     </div>
 
 </template>
@@ -28,8 +28,10 @@ export default {
     submit() {
       axios.post("http://localhost:3000/gpt/", {data: this.textarea})
         .then((res)=>{
-            console.log(res.data)
+            console.log("res.data in landing", res.data)
+            this.$router.push({name:'carousel', query:{data:JSON.stringify(res.data)}})
         })
+      
     },
   },
 }

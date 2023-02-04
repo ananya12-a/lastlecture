@@ -35,19 +35,17 @@ const { Configuration, OpenAIApi } = require("openai");
 
 
 
-//const question = fs.readFileSync("./texts/Lipids.txt","utf8").toString();
 const chatLog = fs.readFileSync("./texts/DNA+Cap.txt", "utf8").toString();
 
 function test_question(text){
   const question = text;
-
-
+  // console.log("test questions called")
   const configuration = new Configuration({
     apiKey: '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',
   });
   const openai = new OpenAIApi(configuration);
   
-  const runAPI = async () => {
+  let runAPI = async () => {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: `${chatLog}\nHuman: ${question}`,//"Write a caption for images to be inserted into text inputs. For example, for the following text input:\n\"Organisms encode the information\nspecifying the amino acid sequences\nof their proteins as sequences of nucleotides in the DNA. This method\nof encoding information is very similar to that by which the sequences\nof letters encode information in a\nsentence. While a sentence written\nin English consists of a combination\nof the 26 different letters of the alphabet in a specific order, the code\nof a DNA molecule consists of different combinations of the four\ntypes of nucleotides in specific sequences such as CGCTTACG. The\ninformation encoded in DNA is used\nin the everyday metabolism of the\norganism and is passed on to the organism’s descendants.\nDNA molecules in organisms exist not as single chains folded into\ncomplex shapes, like proteins, but\nrather as double chains. Two DNA\npolymers wind around each other\nlike the outside and inside rails of a\ncircular staircase. Such a winding\nshape is called a helix, and a helix\ncomposed of two chains winding\nabout one another, as in DNA, is\ncalled a double helix. Each step of\nDNA’s helical staircase is a basepair, consisting of a base in one\nchain attracted by hydrogen bonds\nto a base opposite it on the other\nchain. These hydrogen bonds hold\nthe two chains together as a duplex\n(figure 3.15). The base-pairing rules\nare rigid: adenine can pair only with\nthymine (in DNA) or with uracil (in\nRNA), and cytosine can pair only\nwith guanine. The bases that participate in base-pairing are said to be\ncomplementary to each other. Additional details of the structure of\nDNA and how it interacts with RNA\nin the production of proteins are\npresented in chapters 14 and 15.\"\nThe caption would be \"Image of a DNA molecule\"",
@@ -58,12 +56,47 @@ function test_question(text){
       presence_penalty: 0.6,
       stop: [" Human:", " AI:"],
     });
+    
     return response
   };
+
+
+  //let val;
+
+  // runAPI().then(
+  //    response => {
+  //      //console.log(response.data.choices[0].text.match(/"Image of([^']+)"/)[1])
+  //      //val = response.data.choices[0].text.match(/"Image of([^']+)"/)[1];
+  //      return response.data.choices[0].text.match(/"Image of([^']+)"/)[1];
+
+  // });
+
   
-  runAPI().then(
-    response => {return response.data.choices[0].text.match(/"Image of([^']+)"/)[1]
+
+  let runAPIValue = runAPI().then(response => {
+    //console.log(res.data.choices[0].text.match(/"Image of([^']+)"/)[1]);
+    //console.log("return from runAPI.then:\n");]
+    //console.log(response.data.choices[0].text.match(/"Image of([^']+)"/)[1]);
+    // console.log("response.data\n", response.data)
+    // console.log("caption in gpt3: ", response.data.choices[0].text.match(/"([^']+)"/)[1])
+    let result = response.data.choices[0].text.match(/"([^']+)"/)[1]; //ONLY CORRECT VALUE
+    //console.log(result)
+    return result;
   });
+  // console.log("test question runAPIValue\n", runAPIValue)
+  return runAPIValue;
+
+  // async() => {
+  //   let promise = runAPIValue();
+  //   let result = await promise.resolve("TEST"); // wait until the promise resolves
+  //   //console.log(result)
+  //   return result;
+  // }
+
+  
+
+  //return runAPI();
+  //console.log(val)
   // runAPI().then(
   //   response => {
   //     fs.writeFileSync('./Captions/lipids.txt', response.data.choices[0].text.match(/"Image of([^']+)"/)[1], err => {
@@ -74,10 +107,15 @@ function test_question(text){
   //     });
   //   }
   // )
+    
+
 
 }
 
-
+//const tri = fs.readFileSync("./texts/Lipids.txt","utf8").toString();
+//console.log(tri)
+//console.log(test_question(tri))
+//test_question(tri).then(result => {console.log(result)})
 
 module.exports = {test_question} 
 

@@ -1,11 +1,18 @@
 <template>
   <div class="block">
-    <span class="demonstration">Switch when indicator is clicked</span>
-    <el-carousel trigger="click" height="150px">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3 class="small">{{ item }}</h3>
+    <!-- <span class="demonstration">Switch when indicator is clicked</span>
+    <el-carousel trigger="click" height="450px" autoplay="false">
+      <el-carousel-item v-for="item in this.data" :key="item[1]" >
+        <div>
+          <el-image  style="width: 100%; height: 100%" :src="item[1]" />
+          <p class="medium" style="color: #fff">{{ item[0] }}</p>
+        </div>
       </el-carousel-item>
-    </el-carousel>
+    </el-carousel> -->
+    <div v-for="item in this.data" :key="item[1]" >
+      <img  style="width: 75%; height: auto" :src="item[1]" />
+      <p class="medium" style="color: #fff">{{ item[0] }}</p>
+    </div>
   </div>
 </template>
 
@@ -22,3 +29,19 @@
     background-color: #99a9bf;
   }
 </style>
+
+<script>
+export default {
+  setup() {
+    
+  },
+  data() {
+    return{
+      data: JSON.parse(JSON.parse(this.$route.query.data))
+    }
+  },
+  created() {
+      console.log(this.data)
+  },
+}
+</script>

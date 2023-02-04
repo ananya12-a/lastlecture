@@ -4,24 +4,26 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-      <div class="line"></div>
-      <el-menu
-        :default-active="activeIndex2"
-        class="el-menu-demo"
-        mode="horizontal"
-        @select="handleSelect"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b">
-        <el-menu-item index="0"><img src="@/assets/ranveer.svg" alt="" width="22" height="24" class="d-inline-block align-top"/> </el-menu-item>
-        <el-menu-item index="1">LastLecture</el-menu-item>
-        <el-menu-item index="2">About Us</el-menu-item>
-        <el-menu-item index="3"><img src="https://placekitten.com/g/30/30" class="d-inline-block align-top" alt="Kitten"></el-menu-item>
-      </el-menu>
-  </header>
+  <div>
+    <header>
+        <div class="line"></div>
+        <el-menu
+          :default-active="activeIndex2"
+          class="el-menu-demo"
+          mode="horizontal"
+          @select="handleSelect"
+          background-color="#545c64"
+          text-color="#fff"
+          active-text-color="#ffd04b">
+          <el-menu-item index="0"><img src="@/assets/ranveer.svg" alt="" width="22" height="24" class="d-inline-block align-top"/> </el-menu-item>
+          <el-menu-item index="1">LastLecture</el-menu-item>
+          <el-menu-item index="2">About Us</el-menu-item>
+          <el-menu-item index="3"><img src="https://placekitten.com/g/30/30" class="d-inline-block align-top" alt="Kitten"></el-menu-item>
+        </el-menu>
+    </header>
 
-  <RouterView />
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
