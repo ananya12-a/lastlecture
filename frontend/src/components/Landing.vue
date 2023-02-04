@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     submit() {
-      axios.post("http://localhost:3000/gpt", {data: textarea})
+      axios.post("http://localhost:3000/gpt/", {data: this.textarea})
         .then((res)=>{
             console.log(res.data)
         })

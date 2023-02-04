@@ -19,7 +19,7 @@ const test_question = require("./gpt3")
     
 // } 
 
-app.post('/gpt', (req, res) => {
+app.post('/', (req, res) => {
     console.log(req.data)
     text = req.data
     let split=text.split('\n\n') //split up

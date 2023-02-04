@@ -1,7 +1,7 @@
 var express = require('express')
 var path = require('path');
-
-
+const cors = require('cors');
+const bp = require("body-parser");
 
 const app = express()
 const port = 3000 //|| args['port']
@@ -30,11 +30,11 @@ const port = 3000 //|| args['port']
 // })
 
 // Body Parser allows us to process json/url-encoded requests properly
-// app.use(bp.json());
-// app.use(bp.urlencoded({ extended: true }));
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
 
 // Allows us to use our API on websites not on the same origin
-// app.use(cors());
+app.use(cors());
 
 // Add in routers
 app.use('/gpt', require('./gpt.js'))
