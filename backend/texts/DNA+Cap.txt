@@ -1,0 +1,23 @@
+Human: Write a caption for images to be inserted into text inputs. For example, for the following text input:
+"Learning informally of Franklin’s results before they were published in
+1953, James Watson and Francis Crick, two young investigators at
+Cambridge University, quickly worked out a likely structure for the
+DNA molecule (figure 14.10), which we now know was substantially correct. They analyzed the problem deductively, first building models of
+the nucleotides, and then trying to assemble the nucleotides into a molecule that matched what was known
+about the structure of DNA. They
+tried various possibilities before they
+finally hit on the idea that the molecule might be a simple double helix,
+with the bases of two strands pointed
+inward toward each other, forming
+base-pairs. In their model, basepairs always consist of purines, which
+are large, pointing toward pyrimidines, which are small, keeping the
+diameter of the molecule a constant
+2 nanometers. Because hydrogen
+bonds can form between the bases in
+a base-pair, the double helix is stabilized as a duplex DNA molecule
+composed of two antiparallel
+strands, one chain running 3′ to 5′
+and the other 5′ to 3′. The base-pairs
+are planar (flat) and stack 0.34 nm
+apart as a result of hydrophobic interactions, contributing to the overall stability of the molecule"
+AI: The caption would be "Image of the double helix structure, base-pairs and antiparallel strands of DNA"

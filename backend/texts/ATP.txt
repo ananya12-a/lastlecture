@@ -1,0 +1,4 @@
+"In addition to serving as subunits of DNA and RNA, nucleotide bases play other critical roles in the life of a cell.
+For example, adenine is a key component of the molecule
+adenosine triphosphate (ATP; figure 3.17), the energy currency of the cell. It also occurs in the molecules nicotinamide adenine dinucleotide (NAD+) and flavin adenine dinucleotide (FAD+), which carry electrons whose energy is used
+to make ATP."

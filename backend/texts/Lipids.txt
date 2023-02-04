@@ -1,0 +1,10 @@
+Lipids are a loosely defined group of molecules with one
+main characteristic: they are insoluble in water. The most
+familiar lipids are fats and oils. Lipids have a very high proportion of nonpolar carbon-hydrogen (C—H) bonds, and so
+long-chain lipids cannot fold up like a protein to sequester
+their nonpolar portions away from the surrounding aqueous
+environment. Instead, when placed in water many lipid molecules will spontaneously cluster together and expose what
+polar groups they have to the surrounding water while sequestering the nonpolar parts of the molecules together
+within the cluster. This spontaneous assembly of lipids is of
+paramount importance to cells, as it underlies the structure
+of cellular membranes and other important organelles.
